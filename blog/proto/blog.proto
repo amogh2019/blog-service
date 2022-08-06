@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+
+package blog;
+
+
+option go_package="github.com/amogh2019/blog-service/blog/proto";
+
+
+
+message BlogRequest{
+
+}
