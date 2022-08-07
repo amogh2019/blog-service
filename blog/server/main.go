@@ -9,6 +9,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
+	"google.golang.org/grpc/reflection"
 )
 
 var mongoURI = "mongodb://root:root@localhost:27017/"
@@ -23,15 +25,30 @@ type BlogServiceServerImpl struct {
 func main() {
 	// setting mongo connection // getting pointer to collection
 	blogCollection = connectToMongoAndGetCollection(mongoURI, "blogdb", "blog")
-	// setting up server
+
+	// setting up tcp connection for server to use
 	conn, err := net.Listen("tcp", serverAddress)
 	if err != nil {
 		log.Fatal("cannot listen to ", serverAddress, err)
 	}
 	defer conn.Close()
 
-	server := grpc.NewServer()
+	// setting up ssl for server
+	opts := []grpc.ServerOption{}
+	tlsEnabled := true
+	if tlsEnabled {
+		cred, err := credentials.NewServerTLSFromFile("ssl/server.crt", "ssl/server.pem")
+		if err != nil {
+			log.Fatal("cannot load server cert", err)
+		}
+		opts = append(opts, grpc.Creds(cred))
+	}
+
+	// setting up server
+	server := grpc.NewServer(opts...)
 	pb.RegisterBlogServiceServer(server, &BlogServiceServerImpl{})
+
+	reflection.Register(server)
 
 	err = server.Serve(conn)
 	if err != nil {
