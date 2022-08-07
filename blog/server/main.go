@@ -50,6 +50,7 @@ func main() {
 
 	reflection.Register(server)
 
+	log.Println("Starting Blog Server at :", serverAddress)
 	err = server.Serve(conn)
 	if err != nil {
 		log.Fatal("cannot start server", err)
