@@ -20,3 +20,11 @@ func documentToBlogDto(data *BlogItem) *pb.BlogDto {
 		Content:  data.Content,
 	}
 }
+
+func blogDtoToDocumentWithoutId(data *pb.BlogDto) *BlogItem {
+	return &BlogItem{
+		AuthorId: data.AuthorId,
+		Title:    data.Title,
+		Content:  data.Content,
+	}
+}
