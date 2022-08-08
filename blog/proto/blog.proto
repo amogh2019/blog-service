@@ -24,7 +24,7 @@ message BlogIdDto{
 service BlogService {
 
     rpc CreateBlog (BlogDto) returns (BlogIdDto);
-    rpc ReadBlog (BlogIdDto) returns (BlogIdDto);
+    rpc ReadBlog (BlogIdDto) returns (BlogDto);
     rpc UpdateBlog (BlogDto) returns (google.protobuf.Empty);
     rpc DeleteBlog (BlogIdDto) returns (google.protobuf.Empty);
     rpc ListBlogs (google.protobuf.Empty) returns (stream BlogDto);
