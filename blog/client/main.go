@@ -46,6 +46,8 @@ func main() {
 		switch text {
 		case "1":
 			CreateBlog(&client, scanner)
+		case "2":
+			ReadBlogById(&client, scanner)
 		case "exit":
 			log.Println("closing blog client")
 			shouldContinue = false
