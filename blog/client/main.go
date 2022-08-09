@@ -44,6 +44,8 @@ func main() {
 	for shouldContinue && scanner.Scan() {
 		text := scanner.Text()
 		switch text {
+		case "3":
+			UpdateBlogById(&client, scanner)
 		case "1":
 			CreateBlog(&client, scanner)
 		case "2":
@@ -62,5 +64,5 @@ func main() {
 }
 
 func askForPress() {
-	log.Println("Please type the label for its action \n1 :  Create Blog \n2 :  Read Blog \nexit : To close Blog Client")
+	log.Println("Please type the label for its action \n1 :  Create Blog \n2 :  Read Blog \n3 :  Update Blog \nexit : To close Blog Client")
 }
