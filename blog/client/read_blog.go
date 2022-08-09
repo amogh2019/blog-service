@@ -25,7 +25,7 @@ func ReadBlogById(blogServiceClient *pb.BlogServiceClient, scanner *bufio.Scanne
 		if ok {
 			log.Println("ErrorCode : ", grpcParsedStatus.Code(), " ErrorMsg: ", grpcParsedStatus.Message())
 		} else {
-			log.Fatal("Non-gRPC Error in finding sqaure root from server", err)
+			log.Fatal("Non-gRPC Error from server", err)
 		}
 		return
 	}
