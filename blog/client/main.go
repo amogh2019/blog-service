@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"os"
 
@@ -66,5 +67,6 @@ func main() {
 }
 
 func askForPress() {
+	fmt.Println()
 	log.Println("Please type the label for its action \n1 :  Create Blog \n2 :  Read Blog \n3 :  Update Blog \n4 :  List Blogs \nexit : To close Blog Client")
 }
