@@ -43,5 +43,5 @@ func FindAllBlogs(blogServiceClient *pb.BlogServiceClient) {
 
 	}
 
-	log.Println("List Blog complete.")
+	log.Println("List Blog complete")
 }
