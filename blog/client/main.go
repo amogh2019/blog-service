@@ -45,14 +45,14 @@ func main() {
 	for shouldContinue && scanner.Scan() {
 		text := scanner.Text()
 		switch text {
-		case "4":
-			FindAllBlogs(&client)
-		case "3":
-			UpdateBlogById(&client, scanner)
 		case "1":
 			CreateBlog(&client, scanner)
 		case "2":
 			ReadBlogById(&client, scanner)
+		case "3":
+			UpdateBlogById(&client, scanner)
+		case "4":
+			FindAllBlogs(&client)
 		case "exit":
 			log.Println("closing blog client")
 			shouldContinue = false
