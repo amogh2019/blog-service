@@ -53,6 +53,8 @@ func main() {
 			UpdateBlogById(&client, scanner)
 		case "4":
 			FindAllBlogs(&client)
+		case "5":
+			DeleteBlogById(&client, scanner)
 		case "exit":
 			log.Println("closing blog client")
 			shouldContinue = false
@@ -68,5 +70,5 @@ func main() {
 
 func askForPress() {
 	fmt.Println()
-	log.Println("Please type the label for its action \n1 :  Create Blog \n2 :  Read Blog \n3 :  Update Blog \n4 :  List Blogs \nexit : To close Blog Client")
+	log.Println("Please type the label for its action \n1 :  Create Blog \n2 :  Read Blog \n3 :  Update Blog \n4 :  List Blogs \n5 :  Delete Blog\nexit : To close Blog Client")
 }
